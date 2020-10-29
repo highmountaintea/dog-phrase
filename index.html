@@ -7,9 +7,12 @@
   </head>
   <body>
     <script type="module">
-      import { test1 } from './v0.js';
+      import { test1, bytes2bits, bits2bytes } from './v0.js';
 
       console.log(test1(31));
+      let bits = bytes2bits([25,81,134]);
+      console.log(bits);
+      console.log(bits2bytes(bits));
     </script>
     Hi
   </body>

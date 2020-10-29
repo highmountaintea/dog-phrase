@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/highmountaintea/dog-phrase/issues"
   },
-  "homepage": "https://github.com/highmountaintea/dog-phrase#readme"
+  "homepage": "https://github.com/highmountaintea/dog-phrase#readme",
+  "dependencies": {}
 }
