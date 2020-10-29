@@ -7,12 +7,16 @@
   </head>
   <body>
     <script type="module">
-      import { test1, bytes2bits, bits2bytes } from './v0.js';
+      import { test1, bytes2bits, bits2bytes, bytes2dogPhrase, dogPhrase2bytes } from './v0.js';
 
       console.log(test1(31));
-      let bits = bytes2bits([25,81,134]);
+      let bytes = [25,81,134,0,1,255,2]
+      let bits = bytes2bits(bytes);
       console.log(bits);
       console.log(bits2bytes(bits));
+      let dogPhrase = bytes2dogPhrase(bytes);
+      console.log(dogPhrase);
+      console.log(dogPhrase2bytes(dogPhrase));
     </script>
     Hi
   </body>
