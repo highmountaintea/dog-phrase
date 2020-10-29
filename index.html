@@ -7,16 +7,26 @@
   </head>
   <body>
     <script type="module">
-      import { test1, bytes2bits, bits2bytes, bytes2dogPhrase, dogPhrase2bytes } from './v0.js';
+      import { test1, bytes2bits, bits2bytes, bytes2dogPhrase, dogPhrase2bytes, hex2dogPhrase, dogPhrase2hex } from './v0.js';
 
-      console.log(test1(31));
-      let bytes = [25,81,134,0,1,255,2]
-      let bits = bytes2bits(bytes);
-      console.log(bits);
-      console.log(bits2bytes(bits));
-      let dogPhrase = bytes2dogPhrase(bytes);
-      console.log(dogPhrase);
-      console.log(dogPhrase2bytes(dogPhrase));
+      let fullbytes = [25,81,134,0,1,255,2,14,33,29,230,171];
+      for (let i = 0; i < fullbytes.length; i++) {
+        let bytes = fullbytes.slice(0, i);
+        let bits = bytes2bits(bytes);
+        console.log(bits);
+        console.log(bits2bytes(bits));
+        let dogPhrase = bytes2dogPhrase(bytes);
+        console.log(dogPhrase);
+        console.log(dogPhrase2bytes(dogPhrase));
+      }
+
+      let hexStr = '5df10e861980a360d127cd37c316';
+      for (let i = 0; i < hexStr.length; i += 2) {
+        let hex = hexStr.substr(0, i);
+        let hexPhrase = hex2dogPhrase(hex);
+        console.log(hexPhrase);
+        console.log(dogPhrase2hex(hexPhrase));
+      }
     </script>
     Hi
   </body>
