@@ -7,7 +7,7 @@
   </head>
   <body>
     <script type="module">
-      import { test1, bytes2bits, bits2bytes, bytes2dogPhrase, dogPhrase2bytes, hex2dogPhrase, dogPhrase2hex } from './v0.js';
+      import { test1, bytes2bits, bits2bytes, bytes2dogPhrase, dogPhrase2bytes, hex2dogPhrase, dogPhrase2hex, hash2dogPharse } from './v0.js';
 
       let fullbytes = [25,81,134,0,1,255,2,14,33,29,230,171];
       for (let i = 0; i < fullbytes.length; i++) {
@@ -27,6 +27,20 @@
         console.log(hexPhrase);
         console.log(dogPhrase2hex(hexPhrase));
       }
+
+      hash2dogPharse('Thisisaverylongpasswordbutstillnotagoodone1')
+        .then((val) => {
+          console.log(val);
+        });
+      hash2dogPharse('Thisisaverylongpasswordbutstillnotagoodone2')
+        .then((val) => {
+          console.log(val);
+        });
+      hash2dogPharse('明日の今頃には1')
+        .then((val) => {
+          console.log(val);
+        });
+
     </script>
     Hi
   </body>

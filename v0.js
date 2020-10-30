@@ -1,6 +1,9 @@
 import { wordList } from './v0/word-list.js';
 import { hex2numArray } from './utils/hex2numArray.js';
 import { numArray2hex } from './utils/numArray2hex.js';
+import { hashpw, gensalt } from './utils/bcrypt.js';
+
+const hashSalt = '$2a$12$3B0n8rXlKFEUseZi4kGmge';
 
 export function test1(n) {
   return wordList[n];
@@ -93,4 +96,21 @@ export function hex2dogPhrase(hex) {
 export function dogPhrase2hex(phrase) {
   let bytes = dogPhrase2bytes(phrase);
   return numArray2hex(bytes);
+}
+
+export function hash2bytes(pass) {
+  return new Promise((resolve, reject) => {
+    hashpw(pass, hashSalt, (bcryptResult, rawbytes) => {
+      try {
+        let bytes = rawbytes.map(num => (num + 256) % 256);
+        resolve(bytes.slice(0, 16));
+      } catch (e) {
+        reject(e);
+      }
+    });
+  });
+}
+
+export async function hash2dogPharse(pass) {
+  return bytes2dogPhrase(await hash2bytes(pass));
 }
